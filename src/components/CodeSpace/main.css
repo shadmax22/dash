@@ -1,0 +1,151 @@
+body {
+    overflow: hidden;
+}
+
+.container {
+    animation: PopFromBottomToTop 0.3s;
+    overflow: hidden;
+}
+
+.editor-area,
+.output-area {
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+
+}
+
+.editor-area {
+    z-index: 20;
+}
+
+.editor {
+
+    flex: 1;
+    overflow: hidden;
+
+}
+
+.editor .cm-theme,
+.editor .cm-editor {
+    height: 100%;
+}
+
+.CodeMirror-wrap pre {
+    word-break: break-word;
+}
+
+
+
+.readme-cont {
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: black;
+    z-index: 10;
+}
+
+
+
+
+.readme-cont iframe {
+    width: 100%;
+    height: 100%;
+    border: 0px;
+}
+
+
+
+.readme-cont .signature {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    right: 50px;
+    margin: auto;
+
+    background: #003967;
+    padding: 10px 40px;
+    border-radius: 100px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.readme-cont .signature:hover {
+    background: #122174;
+}
+
+
+.anim-PopUp {
+    animation: PopUp 0.2s;
+}
+
+.anim-PopUp-revert {
+    animation: PopUp-Revert 0.2s;
+}
+
+.anim-PopFromLeftToRight {
+    animation: PopFromLeftToRight 0.2s;
+}
+
+.anim-PopFromBottomToTop {
+    animation: PopFromBottomToTop 0.2s;
+}
+
+.anim-PopFromBottomToTop-revert {
+    animation: PopFromBottomToTop-Revert 0.2s;
+}
+
+@keyframes PopUp {
+    from {
+        transform: scale(0.5);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes PopUp-Revert {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0);
+    }
+
+}
+
+@keyframes PopFromLeftToRight {
+    from {
+        transform: translateX(-100px);
+    }
+
+    to {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes PopFromBottomToTop {
+    from {
+        transform: translateY(100px);
+    }
+
+    to {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes PopFromBottomToTop-Revert {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(1000px);
+    }
+
+}
