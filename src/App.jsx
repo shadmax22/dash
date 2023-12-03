@@ -4,13 +4,13 @@ import viteLogo from "/vite.svg";
 
 import Auth from "./utils/Auth";
 import Editor from "./components/CodeSpace/Editor";
+import Dashboard from "./components/Home/Dashboard";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <Auth>
+        {/* <Dashboard></Dashboard> */}
         <Editor
           data={{
             id: "1SF3221321",

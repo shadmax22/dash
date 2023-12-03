@@ -5,23 +5,24 @@ import CodeMirror from "@uiw/react-codemirror";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
 import { EditorView } from "@codemirror/view";
 
+import "./main.css";
+
 import {
   loadLanguage,
   langNames,
   langs,
 } from "@uiw/codemirror-extensions-langs";
 
-import "./main.css";
-
 import Validator from "../../tools/Validator";
 
-import { BottomNav, TopNav } from "./EditorNavs";
+import { BottomNav, SideNav, TopNav } from "./EditorNavs";
 import Readme from "./Readme";
 import {
   SetEditorData,
   SetReadMeVisibility,
-} from "../../state/Slices/EditorArea";
+} from "../../state/Slices/EditorAreaSlice";
 import { useEffect } from "react";
+import Dashboard from "../Home/Dashboard";
 
 // import {} from "";
 export default function Editor({ data }) {
@@ -50,34 +51,38 @@ export default function Editor({ data }) {
   };
 
   const ControlState = {
-    control: { state: EditorState, dispatch: Dispatcher },
+    state: EditorState,
+    dispatch: Dispatcher,
   };
 
   return (
     <>
-      <div className="container flex">
-        <div className="editor-area flex flex-col">
-          <TopNav {...ControlState}></TopNav>
-          <div className="editor">
-            <CodeMirror
-              options={{
-                lineWrapping: true,
-              }}
-              value={value}
-              extensions={[loadLanguage("html"), EditorView.lineWrapping]}
-              onChange={ChangeWork}
-              onBeforeInput={(instance, obj) => {
-                if (instance.data.length > 1) {
-                  return false;
-                }
-              }}
-              indentWithTab={true}
-              onPasteCapture={PreventPaste}
-              theme={vscodeDark}
-            />
+      <SideNav {...ControlState}></SideNav>
+      <div className="editor-module container flex">
+        {EditorState.navigation == "code" && (
+          <div className="editor-area flex flex-col">
+            <TopNav {...ControlState}></TopNav>
+            <div className="editor">
+              <CodeMirror
+                options={{
+                  lineWrapping: true,
+                }}
+                value={value}
+                extensions={[loadLanguage("html"), EditorView.lineWrapping]}
+                onChange={ChangeWork}
+                onBeforeInput={(instance, obj) => {
+                  if (instance.data.length > 1) {
+                    return false;
+                  }
+                }}
+                indentWithTab={true}
+                onPasteCapture={PreventPaste}
+                theme={vscodeDark}
+              />
+            </div>
+            <BottomNav></BottomNav>
           </div>
-          <BottomNav></BottomNav>
-        </div>
+        )}
 
         <div className="output-area">
           <Readme {...ControlState}></Readme>

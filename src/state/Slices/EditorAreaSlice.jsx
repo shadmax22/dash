@@ -7,9 +7,14 @@ export const EditorAreaSlice = createSlice({
     language: null,
     id: null,
     user: null,
+    type: "personal",
     options: {
       preventPaste: false,
       preventAutoComplete: false,
+    },
+    navigation: {
+      location: "home",
+      sidenav: true,
     },
     output: {
       possible: ["instant", "onchange"],
@@ -20,13 +25,27 @@ export const EditorAreaSlice = createSlice({
     SetReadMeVisibility: (state, action) => {
       state.readMeVisibility = action.payload;
     },
+    OpenSideNav: (state, action) => {
+      state.navigation.sidenav = action.payload;
+    },
     SetEditorData: (state, action) => {
       Object.keys(action.payload).map((i) => {
         state[i] = action.payload[i];
       });
     },
+    SetEditorSetting: (state, action) => {
+      const { name, value } = action.payload;
+      Object.keys(action.payload.value).map((i) => {
+        state[name][i] = action.payload[i];
+      });
+    },
   },
 });
 
-export const { SetReadMeVisibility, SetEditorData } = EditorAreaSlice.actions;
+export const {
+  SetReadMeVisibility,
+  SetEditorData,
+  SetEditorSetting,
+  OpenSideNav,
+} = EditorAreaSlice.actions;
 export default EditorAreaSlice.reducer;

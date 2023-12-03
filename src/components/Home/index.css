@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+
+.dashboard-module {
+
+    background: #01041c;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    font-weight: 100;
+    padding: 30px;
+    overflow-y: scroll;
+    height: 100%;
+
+}
+
+.dashboard-module::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dashboard-module h1 {
+    font-family: sans-serif;
+    color: white;
+    font-size: 40px;
+    padding: 10px 0px;
+}
+
+.dashboard-module h2 {
+    font-family: sans-serif;
+
+}
+
+.dashboard-module hr {
+    margin-bottom: 35px;
+}
+
+.dashboard-module ul {
+    list-style: unset;
+    margin-left: 50px;
+}
+
+.dashboard-module ul li {
+    padding: 10px;
+    background: #1a1f46;
+    margin-bottom: 10px;
+    border-bottom-right-radius: 12px;
+}
+
+.dashboard-module blockquote {
+    margin-top: 40px;
+}
+
+.card {
+    background-color: #1a1f46;
+    width: calc(50% - 4px);
+}
+
+
+.profile-module button {
+    background-color: #1a1f46;
+    font-weight: bold;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-family: sans-serif;
+    border-radius: 5px;
+}

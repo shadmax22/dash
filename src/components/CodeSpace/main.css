@@ -2,17 +2,25 @@ body {
     overflow: hidden;
 }
 
-.container {
+.editor-module.container {
     animation: PopFromBottomToTop 0.3s;
     overflow: hidden;
 }
 
 .editor-area,
 .output-area {
-    width: 50%;
+
     height: 100vh;
     overflow: hidden;
 
+}
+
+.editor-area {
+    width: 50%;
+}
+
+.output-area {
+    flex: auto;
 }
 
 .editor-area {
@@ -77,6 +85,37 @@ body {
     background: #122174;
 }
 
+.sideNav {
+    width: 20vw;
+    height: 100%;
+    background-color: #01041c;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    animation: PopFromLeftToRight 0.2s;
+}
+
+.sideNav h1 {
+    font-size: 24px;
+}
+
+.sideNav .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.sideNavHider {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    background-color: black;
+    z-index: 99;
+}
 
 .anim-PopUp {
     animation: PopUp 0.2s;
@@ -88,6 +127,10 @@ body {
 
 .anim-PopFromLeftToRight {
     animation: PopFromLeftToRight 0.2s;
+}
+
+.anim-PopFromLeftToRight-revert {
+    animation: PopFromLeftToRight-revert 0.2s;
 }
 
 .anim-PopFromBottomToTop {
@@ -126,6 +169,16 @@ body {
 
     to {
         transform: translateX(0px);
+    }
+}
+
+@keyframes PopFromLeftToRight-revert {
+    from {
+        transform: translateX(0px);
+    }
+
+    to {
+        transform: translateX(-500px);
     }
 }
 

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { SetReadMeVisibility } from "../../state/Slices/EditorArea";
+import { SetReadMeVisibility } from "../../state/Slices/EditorAreaSlice";
+import Dashboard from "../Home/Dashboard";
 
-export default function Readme({ code, visibility = true, control }) {
-  const ReadMeVisibilty = control.state.readMeVisibility;
+export default function Readme({ code, visibility = true, state, dispatch }) {
+  const ReadMeVisibilty = state.readMeVisibility;
 
   const [customClass, setCustomClass] = useState("");
   const [visibleStat, setVisibleStat] = useState(ReadMeVisibilty);
@@ -25,16 +26,12 @@ export default function Readme({ code, visibility = true, control }) {
 
   return visibleStat ? (
     <>
-      <div className={"readme-cont " + customClass}>
-        <iframe srcDoc={code ?? DefaultReadMe}></iframe>
-        <span
-          class="signature"
-          onClick={() => {
-            control.dispatch(SetReadMeVisibility(false));
-          }}
-        >
-          START MY JOURNEY
-        </span>
+      <div
+        className={"readme-cont " + customClass}
+        style={state.navigation.location == "home" && { width: "80vw" }}
+      >
+        <Dashboard state={state} dispatch={dispatch}></Dashboard>
+        {/* <iframe srcDoc={code ?? DefaultReadMe}></iframe> */}
       </div>
     </>
   ) : (
