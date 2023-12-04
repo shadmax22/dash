@@ -3,21 +3,15 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
 import Auth from "./utils/Auth";
-import Editor from "./components/CodeSpace/Editor";
-import Dashboard from "./components/Home/Dashboard";
-
+import Main from "./components/CodeSpace/Main";
+import Dashboard from "./components/Home/Dashboard/Dashboard";
+import { Route } from "./routes/Web";
 function App() {
   return (
     <>
       <Auth>
         {/* <Dashboard></Dashboard> */}
-        <Editor
-          data={{
-            id: "1SF3221321",
-            name: "HELLO WORLD",
-            readMeVisibility: true,
-          }}
-        ></Editor>
+        <Main></Main>
       </Auth>
     </>
   );

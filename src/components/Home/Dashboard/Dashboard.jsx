@@ -1,11 +1,11 @@
-import Card from "./Card";
-import List from "./List";
-import "./index.css";
+import Card from "../Card/Card";
+import List from "../List/List";
+import style from "./index.module.css";
+
 export default function Dashboard({ state, dispatch }) {
-  console.log(state?.navigation?.location);
-  return state?.navigation?.location == "home" ? (
+  return (
     <>
-      <div className="dashboard-module">
+      <div className={style["dashboard-module"]}>
         <h1>
           Welcome to DASH{" "}
           <span style={{ fontSize: "20px", fontWeight: "bold" }}>V1.0</span>
@@ -46,7 +46,5 @@ export default function Dashboard({ state, dispatch }) {
         <div className="p-20"></div>
       </div>
     </>
-  ) : (
-    <></>
   );
 }

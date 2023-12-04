@@ -1,0 +1,8 @@
+.profile-module button {
+    background-color: #1a1f46;
+    font-weight: bold;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-family: sans-serif;
+    border-radius: 5px;
+}

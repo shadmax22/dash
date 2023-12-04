@@ -8,17 +8,20 @@ export const EditorAreaSlice = createSlice({
     id: null,
     user: null,
     type: "personal",
+    name: "",
     options: {
       preventPaste: false,
       preventAutoComplete: false,
     },
     navigation: {
-      location: "home",
+      location: "code",
+      id: null,
       sidenav: true,
     },
     output: {
       possible: ["instant", "onchange"],
       on: "instant",
+      timeout: 1000,
     },
   },
   reducers: {
@@ -35,8 +38,9 @@ export const EditorAreaSlice = createSlice({
     },
     SetEditorSetting: (state, action) => {
       const { name, value } = action.payload;
+
       Object.keys(action.payload.value).map((i) => {
-        state[name][i] = action.payload[i];
+        state[name][i] = value[i];
       });
     },
   },

@@ -1,0 +1,4 @@
+.card {
+    background-color: #1a1f46;
+    width: calc(50% - 4px);
+}

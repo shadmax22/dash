@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { SetReadMeVisibility } from "../../state/Slices/EditorAreaSlice";
-import Dashboard from "../Home/Dashboard";
+import Dashboard from "../Home/Dashboard/Dashboard";
 
 export default function Readme({ code, visibility = true, state, dispatch }) {
   const ReadMeVisibilty = state.readMeVisibility;
@@ -28,7 +28,7 @@ export default function Readme({ code, visibility = true, state, dispatch }) {
     <>
       <div
         className={"readme-cont " + customClass}
-        style={state.navigation.location == "home" && { width: "80vw" }}
+        style={state.navigation.location == "home" ? { width: "80vw" } : {}}
       >
         <Dashboard state={state} dispatch={dispatch}></Dashboard>
         {/* <iframe srcDoc={code ?? DefaultReadMe}></iframe> */}

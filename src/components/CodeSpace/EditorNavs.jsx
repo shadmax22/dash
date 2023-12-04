@@ -12,14 +12,17 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   OpenSideNav,
   SetEditorSetting,
+  SetEditorData,
   SetReadMeVisibility,
 } from "../../state/Slices/EditorAreaSlice";
-import List from "../Home/List";
-import { Profile } from "../Home/Profile";
+
+import { workspace } from "../../state/Slices/WorkSpaceSlice";
+import List from "../Home/List/List";
+import { Profile } from "../Home/Profile/Profile";
 import { useEffect } from "react";
 import { useState } from "react";
 
-export function TopNav({ state, dispatch }) {
+export function TopNav({ state, dispatch, mainState }) {
   const ReadMeVisibilty = state.readMeVisibility;
 
   return (
@@ -56,7 +59,17 @@ export function TopNav({ state, dispatch }) {
                 </button>
               </li>
               <li>
-                <button className="bg-slate-800 px-4 py-2 flex items-center gap-2 text-xs rounded-2xl ">
+                <button
+                  className="bg-slate-800 px-4 py-2 flex items-center gap-2 text-xs rounded-2xl "
+                  onClick={() => {
+                    dispatch(
+                      workspace.save({
+                        id: state.id,
+                        code: mainState.WorkSpace.output,
+                      })
+                    );
+                  }}
+                >
                   <FontAwesomeIcon icon={faUpload}></FontAwesomeIcon>SUBMIT
                 </button>
               </li>
@@ -82,7 +95,7 @@ export function BottomNav() {
   );
 }
 
-export function SideNav({ state, dispatch }) {
+export function SideNav({ state, dispatch, mainState }) {
   const SideNavVisibleStat =
     state.navigation.location == "home" || state.navigation.sidenav;
 
@@ -114,10 +127,7 @@ export function SideNav({ state, dispatch }) {
       )}
 
       <div className={"sideNav flex flex-col px-4 py-10 " + customClass}>
-        <Profile></Profile>
-        <div className="list">
-          <List></List>
-        </div>
+        <Profile mainState={mainState} dispatch={dispatch}></Profile>
 
         <div className="w-full footer p-3 flex justify-center">
           <b className="font-sans">
